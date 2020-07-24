@@ -7,7 +7,7 @@ module DelayedPaperclip
   class << self
     def options
       @options ||= {
-        :background_job_class => DelayedPaperclip::ProcessJob,
+        :background_job_class => "DelayedPaperclip::ProcessJob",
         :url_with_processing  => true,
         :processing_image_url => nil,
         :queue => "paperclip"
@@ -15,7 +15,7 @@ module DelayedPaperclip
     end
 
     def processor
-      options[:background_job_class]
+      Object.const_get options[:background_job_class]
     end
 
     def enqueue(instance_klass, instance_id, attachment_name)

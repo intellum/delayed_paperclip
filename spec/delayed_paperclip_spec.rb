@@ -7,7 +7,7 @@ describe DelayedPaperclip do
 
   describe ".options" do
     it ".options returns basic options" do
-      DelayedPaperclip.options.should == {:background_job_class => DelayedPaperclip::ProcessJob,
+      DelayedPaperclip.options.should == {:background_job_class => "DelayedPaperclip::ProcessJob",
                                           :url_with_processing => true,
                                           :processing_image_url => nil,
                                           :queue => "paperclip"}

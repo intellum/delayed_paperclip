@@ -53,7 +53,7 @@ end
 
 def reset_global_default_options
   DelayedPaperclip.options.merge!({
-    :background_job_class => DelayedPaperclip::ProcessJob,
+    :background_job_class => "DelayedPaperclip::ProcessJob",
     :url_with_processing  => true,
     :processing_image_url => nil
   })
