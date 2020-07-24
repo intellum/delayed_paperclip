@@ -18,8 +18,8 @@ module DelayedPaperclip
       Object.const_get options[:background_job_class]
     end
 
-    def enqueue(instance_klass, instance_id, attachment_name)
-      processor.enqueue_delayed_paperclip(instance_klass, instance_id, attachment_name)
+    def enqueue(instance_klass, instance_id, attachment_name, file_content_type)
+      processor.enqueue_delayed_paperclip(instance_klass, instance_id, attachment_name, file_content_type)
     end
 
     def process_job(instance_klass, instance_id, attachment_name)
@@ -101,7 +101,8 @@ module DelayedPaperclip
     end
 
     def enqueue_post_processing_for name
-      DelayedPaperclip.enqueue(self.class.name, read_attribute(:id), name.to_sym)
+      DelayedPaperclip.enqueue(self.class.name, read_attribute(:id), name.to_sym, read_attribute(:"#{name}_content_type"))
+
     end
 
     def prepare_enqueueing_for name

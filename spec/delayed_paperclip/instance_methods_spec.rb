@@ -46,7 +46,7 @@ describe DelayedPaperclip::InstanceMethods do
 
   describe "#enqueue_post_processing_for" do
     it "enqueues the instance and image" do
-      DelayedPaperclip.expects(:enqueue).with("Dummy", dummy.id, :image)
+      DelayedPaperclip.expects(:enqueue).with("Dummy", dummy.id, :image, nil)
       dummy.enqueue_post_processing_for("image")
     end
   end

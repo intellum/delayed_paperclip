@@ -22,8 +22,8 @@ describe DelayedPaperclip do
 
   describe ".enqueue" do
     it "delegates to processor" do
-      DelayedPaperclip::ProcessJob.expects(:enqueue_delayed_paperclip).with("Dummy", 1, :image)
-      DelayedPaperclip.enqueue("Dummy", 1, :image)
+      DelayedPaperclip::ProcessJob.expects(:enqueue_delayed_paperclip).with("Dummy", 1, :image, "image/png")
+      DelayedPaperclip.enqueue("Dummy", 1, :image, "image/png")
     end
   end
 
